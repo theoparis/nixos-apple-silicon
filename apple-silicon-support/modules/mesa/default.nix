@@ -1,9 +1,6 @@
-{ options, config, pkgs, lib, ... }:
+{ config, lib, ... }:
 {
-  config = let
-    isMode = mode: (config.hardware.asahi.useExperimentalGPUDriver
-        && config.hardware.asahi.experimentalGPUInstallMode == mode);
-  in lib.mkIf config.hardware.asahi.enable (lib.mkMerge [
+  config = lib.mkIf config.hardware.asahi.enable (lib.mkMerge [
     {
       # required for proper DRM setup even without GPU driver
       services.xserver.config = ''
