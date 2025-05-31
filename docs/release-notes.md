@@ -2,6 +2,19 @@
 
 This file contains important information for each release.
 
+## 2025-05-30
+
+This release updates nixpkgs and the kernel.
+
+Updating nixpkgs brings us past the 25.05 release and on the path to 25.11.
+
+This release also fixes a build issue with Mesa on recent nixpkgs. Thanks
+to wistfulbrick for clues to this fix.
+
+As promised, the repositry has been moved to the nix-community organization. The
+old URL should redirect automatically but you may wish to update your
+configuration.
+
 ## 2025-05-17
 
 This release updates nixpkgs, the kernel, and Mesa.
