@@ -8,7 +8,7 @@ This guide will build and was tested with the following software:
 * Nixpkgs, as of 2025-05-15
 * macOS stub 13.5
 
-NOTE: The latest version of this guide will always be [at its home](https://github.com/tpwrules/nixos-apple-silicon/blob/main/docs/uefi-standalone.md). For more general information about Linux on Apple Silicon Macs, refer to the [Asahi Linux project](https://asahilinux.org/) and [alpha installer release](https://asahilinux.org/2022/03/asahi-linux-alpha-release/).
+NOTE: The latest version of this guide will always be [at its home](https://github.com/nix-community/nixos-apple-silicon/blob/main/docs/uefi-standalone.md). For more general information about Linux on Apple Silicon Macs, refer to the [Asahi Linux project](https://asahilinux.org/) and [alpha installer release](https://asahilinux.org/2022/03/asahi-linux-alpha-release/).
 
 ## Introduction
 
@@ -46,14 +46,14 @@ The following items are required to get started:
 
 This setup takes advantage of the Nix package manager, which handles downloading and compiling everything. You must first install it on your Linux host PC if it doesn't run NixOS. Most distros are compatible, and installation (and uninstallation) is simple. Instructions are available on the [NixOS website](https://nixos.org/download.html#nix-quick-install).
 
-If you cannot or do not wish to install Nix and/or build these components yourself, installation ISOs are automatically built and made available from the [GitHub Releases page](https://github.com/tpwrules/nixos-apple-silicon/releases). Download the latest one, use `dd` or similar to transfer it to your USB flash drive, then skip down to the section on [UEFI Preparation](#uefi-preparation). Programs like `unetbootin` are not supported. These ISOs are fully reproducible; that is, the ISO you download will be (or should be...) bit-identical to the one you will get by following these preparation instructions.
+If you cannot or do not wish to install Nix and/or build these components yourself, installation ISOs are automatically built and made available from the [GitHub Releases page](https://github.com/nix-community/nixos-apple-silicon/releases). Download the latest one, use `dd` or similar to transfer it to your USB flash drive, then skip down to the section on [UEFI Preparation](#uefi-preparation). Programs like `unetbootin` are not supported. These ISOs are fully reproducible; that is, the ISO you download will be (or should be...) bit-identical to the one you will get by following these preparation instructions.
 
 #### nixos-apple-silicon
 
 Clone this repository to a suitable location on the host PC. In the future, you can update this repository using `git pull` and re-run the `nix build` commands to update things.
 
 ```
-$ git clone https://github.com/tpwrules/nixos-apple-silicon/
+$ git clone https://github.com/nix-community/nixos-apple-silicon/
 $ cd nixos-apple-silicon
 ```
 
@@ -139,7 +139,7 @@ Start the Mac, and U-Boot should start booting from the USB drive automatically.
   <summary>If "mounting `/dev/root` on `/mnt-root/iso` failed: No such file or directory" during boot…</summary>
   
   1. Was the ISO transferred to your flash drive correctly as described above? `dd` is the only correct way to do this. The ISO must be transferred to the drive block device itself, not a partition on the drive.
-  2. There is sometimes a [race condition](https://github.com/tpwrules/nixos-apple-silicon/issues/60) which causes booting to fail. Reboot the machine and try again.
+  2. There is sometimes a [race condition](https://github.com/nix-community/nixos-apple-silicon/issues/60) which causes booting to fail. Reboot the machine and try again.
   3. Some flash drives have quirks. Try a different drive, or use the following steps:
 
       1. Attempt to start the installer normally
@@ -362,7 +362,7 @@ U-Boot and m1n1 are automatically managed by NixOS' bootloader system. If you ro
 
 If you want the Apple Silicon support module to be upgraded in tandem with NixOS instead of manually downloading new files, you can add it as a channel with the following command:
 ```
-$ sudo nix-channel --add https://github.com/tpwrules/nixos-apple-silicon/archive/main.tar.gz apple-silicon-support
+$ sudo nix-channel --add https://github.com/nix-community/nixos-apple-silicon/archive/main.tar.gz apple-silicon-support
 ```
 
 Modify your `/etc/nixos/configuration.nix` to reference the channel instead of the local files:
