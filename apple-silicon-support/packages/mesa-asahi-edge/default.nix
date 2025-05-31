@@ -21,8 +21,8 @@
     let
       badFlags = [
         "-Dinstall-mesa-clc"
-        "-Dopencl-spirv"
         "-Dgallium-nine"
+        "-Dtools"
       ];
       isBadFlagList = f: builtins.map (b: lib.hasPrefix b f) badFlags;
       isGoodFlag = f: !(builtins.foldl' (x: y: x || y) false (isBadFlagList f));
@@ -32,6 +32,7 @@
       "-Dgallium-va=disabled"
       "-Dgallium-vdpau=disabled"
       "-Dgallium-xa=disabled"
+      "-Dtools=asahi"
     ];
 
   # replace patches with ones tweaked slightly to apply to this version
