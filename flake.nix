@@ -7,6 +7,8 @@
     };
 
     flake-compat.url = "github:nix-community/flake-compat";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, ... }@inputs:
@@ -15,8 +17,23 @@
       systems = [ "aarch64-linux" "x86_64-linux" ]; # "i686-linux" omitted
 
       forAllSystems = inputs.nixpkgs.lib.genAttrs systems;
+
+      treefmtEval = forAllSystems (system:
+        let
+          pkgs = inputs.nixpkgs.legacyPackages.${system};
+        in
+          inputs.treefmt-nix.lib.evalModule pkgs {
+            projectRootFile = "flake.nix";
+            programs.nixfmt.enable = true;
+          }
+      );
     in
       {
+        formatter = forAllSystems (system: treefmtEval.${system}.config.build.wrapper);
+        checks = forAllSystems (system: {
+          formatting = treefmtEval.${system}.config.build.check self;
+        });
+
         overlays = rec {
           apple-silicon-overlay = import ./apple-silicon-support/packages/overlay.nix;
           default = apple-silicon-overlay;
