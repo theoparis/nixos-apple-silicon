@@ -2,6 +2,16 @@
 
 This file contains important information for each release.
 
+## 2025-08-10
+
+This release updates nixpkgs.
+
+Rust support is now the default in the kernel (even in the installer). This
+release also fixes a build issue with asahi-fwextract.
+
+As of this release, the release model is now documented [here](https://github.com/nix-community/nixos-apple-silicon/blob/main/docs/release-process.md). Development
+is now shifting directly to the main branch instead of discrete tagged releases.
+
 ## 2025-05-30
 
 This release updates nixpkgs and the kernel.
