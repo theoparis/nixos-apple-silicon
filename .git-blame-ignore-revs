@@ -6,3 +6,6 @@
 
 # treewide: re-format
 69532003a7d4b95c0fc508c6ee777411a9b3dd3b
+
+# treewide: reformat with nixfmt v1.0.0
+6d4cda2babefde18a6769d5089ce1abcaffd0355
