@@ -2,7 +2,6 @@
 
 This guide will build and was tested with the following software:
 * Asahi Linux kernel version asahi-6.14.8-1
-* Asahi Linux's Mesa version 25.1.0_asahi-20250425-1
 * m1n1 version v1.4.21
 * Asahi Linux's U-Boot version 2025.04-1-asahi
 * Nixpkgs, as of 2025-08-06

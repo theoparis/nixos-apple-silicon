@@ -102,6 +102,16 @@
       "asahi"
       "addEdgeKernelConfig"
     ] "All edge kernel config options are now the default.")
+    (lib.mkRemovedOptionModule [
+      "hardware"
+      "asahi"
+      "experimentalGPUInstallMode"
+    ] "This option became unnecessary with asahi support landing in mainline mesa.")
+    (lib.mkRemovedOptionModule [
+      "hardware"
+      "asahi"
+      "useExperimentalGPUDriver"
+    ] "This option became unnecessary with asahi support landing in mainline mesa.")
     (lib.mkRemovedOptionModule [ "hardware" "asahi" "withRust" ] "Rust support is now the default.")
   ];
 }
